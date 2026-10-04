@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="helaCabs vehicle rental and fleet management portal">
+  <title>Log in | helaCabs</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="login">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><strong>24/7 Hotline:</strong> +94 11 2588 588</span>
+      <span>Island-wide pickup . Sri Lanka</span>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="/index.html" aria-label="Go to home">
+        <span class="brand-mark">HC</span>
+        <span class="brand-name">hela<span>Cabs</span><small>Cab & Vehicle Rental Solutions</small></span>
+      </a>
+      <nav id="nav-links" class="nav-links" aria-label="Primary navigation"></nav>
+      <div id="nav-actions" class="nav-actions"></div>
+      <button class="btn btn-outline btn-icon mobile-menu" type="button" data-action="toggle-menu" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <main id="app" aria-live="polite">
+<section class="dashboard-hero">
+<div class="container">
+<span class="eyebrow">helaCabs</span>
+<h1>Welcome back</h1>
+<p>Log in to open your portal.</p>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="card panel" style="max-width:620px;margin:auto">
+<form id="login-form">
+<div class="form-grid">
+<div class="form-group full">
+<label for="login-email">Email</label>
+<input id="login-email" type="email" name="email" autocomplete="username" required>
+</div>
+<div class="form-group full">
+<label for="login-password">Password</label>
+<input id="login-password" type="password" name="password" autocomplete="current-password" required>
+</div>
+</div>
+<div class="notice notice-info">Demo: customer@carrental.lk / customer123</div>
+<div class="form-actions">
+<a class="btn btn-outline" href="/index.html">Cancel</a>
+<button class="btn btn-primary" type="submit">Log in</button>
+</div>
+</form>
+<p>
+<a href="/register.html">Create an account</a>
+</p>
+</div>
+</div>
+</section>
+</main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><strong>helaCabs</strong><br>Reliable vehicle rental solutions across Sri Lanka.</div>
+      <div><strong>Head Office</strong><br>Colombo 03 · support@helacabs.lk</div>
+      <div>© 2026 helaCabs · SLIIT SE2030</div>
+    </div>
+  </footer>
+
+  <dialog id="app-modal" aria-labelledby="modal-title"></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/js/common.js" defer></script>
+  <script src="/js/actions.js" defer></script>
+</body>
+</html>

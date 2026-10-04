@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="helaCabs vehicle rental and fleet management portal">
+  <title>Home | helaCabs</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="home">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><strong>24/7 Hotline:</strong> +94 11 2588 588</span>
+      <span>Island-wide pickup · Sri Lanka</span>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="/index.html" aria-label="Go to home">
+        <span class="brand-mark">HC</span>
+        <span class="brand-name">hela<span>Cabs</span><small>Cab & Vehicle Rental Solutions</small></span>
+      </a>
+      <nav id="nav-links" class="nav-links" aria-label="Primary navigation"></nav>
+      <div id="nav-actions" class="nav-actions"></div>
+      <button class="btn btn-outline btn-icon mobile-menu" type="button" data-action="toggle-menu" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <main id="app" aria-live="polite">
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<span class="eyebrow">Trusted across Sri Lanka</span>
+<h1>Your journey,<br>
+<span>our wheels.</span>
+</h1>
+<p>Book reliable vehicles and manage your next journey with helaCabs.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="/vehicles.html">Browse vehicles</a>
+<a class="btn btn-outline" href="/portal">Open my portal</a>
+</div>
+</div>
+<form class="search-card" id="quick-search" action="/vehicles.html" method="get">
+<h2>Find an available vehicle</h2>
+<p>Choose your travel dates to see available vehicles.</p>
+<div class="form-grid">
+<div class="form-group full">
+<label for="home-query">Search</label>
+<input id="home-query" name="query" placeholder="Brand or model">
+</div>
+<div class="form-group">
+<label for="home-start">Pickup date</label>
+<input id="home-start" type="date" name="startDate" required>
+</div>
+<div class="form-group">
+<label for="home-end">Return date</label>
+<input id="home-end" type="date" name="endDate" required>
+</div>
+<input type="hidden" name="availableOnly" value="true">
+<div class="form-group full">
+<button class="btn btn-primary" type="submit">Check availability</button>
+</div>
+</div>
+</form>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head">
+<div>
+<span class="eyebrow">Popular choices</span>
+<h2>Ready for the road</h2>
+</div>
+<a class="btn btn-outline" href="/vehicles.html">View all</a>
+</div>
+<div id="featured-vehicles" class="grid grid-3">
+</div>
+</div>
+</section>
+<section class="section-sm">
+<div class="container grid grid-3">
+<article class="card feature-card">
+<div class="feature-icon">🛡</div>
+<h3>Your rental account</h3>
+<p>Keep your bookings and journey details together.</p>
+</article>
+<article class="card feature-card">
+<div class="feature-icon">⚡</div>
+<h3>Find your vehicle</h3>
+<p>Search by your dates, budget and preferred vehicle.</p>
+</article>
+<article class="card feature-card">
+<div class="feature-icon">🧾</div>
+<h3>Clear rental details</h3>
+<p>View daily rates, mileage allowances and your booking total.</p>
+</article>
+</div>
+</section>
+</main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><strong>helaCabs</strong><br>Reliable vehicle rental solutions across Sri Lanka.</div>
+      <div><strong>Head Office</strong><br>Colombo 03 · support@helacabs.lk</div>
+      <div>© 2026 helaCabs · SLIIT SE2030</div>
+    </div>
+  </footer>
+
+  <dialog id="app-modal" aria-labelledby="modal-title"></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/js/common.js" defer></script>
+  <script src="/js/components.js" defer></script>
+  <script src="/js/forms.js" defer></script>
+  <script src="/js/pages.js" defer></script>
+  <script src="/js/actions.js" defer></script>
+</body>
+</html>
