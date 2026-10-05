@@ -18,6 +18,7 @@ function vehicleCard(vehicle) {
 function reservationCard(reservation, mode = "customer") {
   const actions = [];
   const report = state.returnReports.find(item => item.reservation.id === reservation.id);
+  const returnRecord = state.returns.find(r => r.reservation?.id === reservation.id);
   let returnNotice = "";
   if (mode === "staff" && reservation.status === "PENDING") {
     actions.push(`<button class="btn btn-green btn-sm" data-action="confirm-reservation" data-id="${reservation.id}">Confirm</button>`);
@@ -68,7 +69,7 @@ function reservationCard(reservation, mode = "customer") {
           ${payBadge}
         </div>
       </div>
-      <div class="booking-details"><div>Pickup<strong>${formatDate(reservation.startDate)}</strong></div><div>Return<strong>${formatDate(reservation.endDate)}</strong></div><div>Route<strong>${escapeHtml(reservation.pickupLocation)} → ${escapeHtml(reservation.returnLocation)}</strong></div><div>Total (${escapeHtml(reservation.totalDays)} days)<strong>${money(reservation.totalAmount)}</strong></div></div>
+      <div class="booking-details"><div>Pickup<strong>${formatDate(reservation.startDate)}</strong></div><div>Return<strong>${formatDate(reservation.endDate)}</strong></div><div>Route<strong>${escapeHtml(reservation.pickupLocation)} → ${escapeHtml(reservation.returnLocation)}</strong></div><div>${returnRecord ? `Grand Total (incl. fees)` : `Total (${escapeHtml(reservation.totalDays)} days)`}<strong>${money(returnRecord ? returnRecord.grandTotal : reservation.totalAmount)}</strong></div>${returnRecord && returnRecord.totalAdditionalCharges > 0 ? `<div>Additional charges<strong>${money(returnRecord.totalAdditionalCharges)}</strong></div>` : ""}</div>
       <p>Chauffeur included${reservation.notes ? ` · ${escapeHtml(reservation.notes)}` : ""}</p>
       ${returnNotice}
       ${actions.length ? `<div class="card-actions">${actions.join("")}</div>` : ""}
