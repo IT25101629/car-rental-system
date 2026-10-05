@@ -1,35 +1,33 @@
 package com.carrental.config;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.sql.DataSource;
 
-public class DatabaseConnection {
+public final class DatabaseConnection {
 
     private static DatabaseConnection instance;
-    private Connection connection;
+    private final DataSource dataSource;
 
-    private final String url = "jdbc:sqlserver://localhost:1433;databaseName=CarRentalDB;encrypt=true;trustServerCertificate=true";
-    private final String username = "sa";
-    private final String password = "123";
-
-    private DatabaseConnection() {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            this.connection = DriverManager.getConnection(url, username, password);
-        } catch (ClassNotFoundException | SQLException e) {
-            // Logged or handled gracefully without disrupting application context
-        }
+    private DatabaseConnection(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
-    public static synchronized DatabaseConnection getInstance() {
+    public static synchronized DatabaseConnection initialize(DataSource dataSource) {
         if (instance == null) {
-            instance = new DatabaseConnection();
+            instance = new DatabaseConnection(dataSource);
         }
         return instance;
     }
 
-    public Connection getConnection() {
-        return connection;
+    public static synchronized DatabaseConnection getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("DatabaseConnection has not been initialized");
+        }
+        return instance;
+    }
+
+    public Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
     }
 }
