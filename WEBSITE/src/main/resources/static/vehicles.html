@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="helaCabs vehicle rental and fleet management portal">
+  <title>Vehicles | helaCabs</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="vehicles">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><strong>24/7 Hotline:</strong> +94 11 2588 588</span>
+      <span>Island-wide pickup · Sri Lanka</span>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="/index.html" aria-label="Go to home">
+        <span class="brand-mark">HC</span>
+        <span class="brand-name">hela<span>Cabs</span><small>Cab & Vehicle Rental Solutions</small></span>
+      </a>
+      <nav id="nav-links" class="nav-links" aria-label="Primary navigation"></nav>
+      <div id="nav-actions" class="nav-actions"></div>
+      <button class="btn btn-outline btn-icon mobile-menu" type="button" data-action="toggle-menu" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <main id="app" aria-live="polite">
+<section class="dashboard-hero">
+<div class="container">
+<span class="eyebrow">Vehicle collection</span>
+<h1>Choose your next ride</h1>
+<p>Search our fleet by dates, category and daily rate.</p>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<form id="vehicle-filter" class="card filter-panel" action="/vehicles.html" method="get">
+<div class="filter-grid">
+<div class="form-group">
+<label for="query">Search</label>
+<input id="query" name="query" placeholder="Brand or model">
+</div>
+<div class="form-group">
+<label for="category">Category</label>
+<select id="category" name="category">
+<option value="">All</option>
+<option>Economy</option>
+<option>Sedan</option>
+<option>SUV</option>
+<option>Luxury</option>
+<option>Van</option>
+</select>
+</div>
+<div class="form-group">
+<label for="fuelType">Fuel</label>
+<select id="fuelType" name="fuelType">
+<option value="">All</option>
+<option>Petrol</option>
+<option>Diesel</option>
+<option>Hybrid</option>
+<option>Electric</option>
+</select>
+</div>
+<div class="form-group">
+<label for="transmission">Transmission</label>
+<select id="transmission" name="transmission">
+<option value="">All</option>
+<option>Automatic</option>
+<option>Manual</option>
+</select>
+</div>
+<div class="form-group">
+<label for="maxPrice">Maximum/day</label>
+<input id="maxPrice" type="number" name="maxPrice" min="0" placeholder="LKR">
+</div>
+<div class="form-group">
+<label for="availableOnly">Availability</label>
+<select id="availableOnly" name="availableOnly">
+<option value="">All vehicles</option>
+<option value="true">Available only</option>
+</select>
+</div>
+<div class="form-group">
+<label for="startDate">Pickup date</label>
+<input id="startDate" type="date" name="startDate">
+</div>
+<div class="form-group">
+<label for="endDate">Return date</label>
+<input id="endDate" type="date" name="endDate">
+</div>
+<button class="btn btn-primary" type="submit">Apply filters</button>
+<a class="btn btn-outline" href="/vehicles.html">Clear filters</a>
+</div>
+</form>
+<div class="section-head">
+<div>
+<h2>Vehicle collection</h2>
+<p id="vehicle-count">
+</p>
+</div>
+</div>
+<div id="vehicle-grid" class="grid grid-3">
+</div>
+</div>
+</section>
+</main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><strong>helaCabs</strong><br>Reliable vehicle rental solutions across Sri Lanka.</div>
+      <div><strong>Head Office</strong><br>Colombo 03 · support@helacabs.lk</div>
+      <div>© 2026 helaCabs · SLIIT SE2030</div>
+    </div>
+  </footer>
+
+  <dialog id="app-modal" aria-labelledby="modal-title"></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/js/common.js" defer></script>
+  <script src="/js/components.js" defer></script>
+  <script src="/js/forms.js" defer></script>
+  <script src="/js/pages.js" defer></script>
+  <script src="/js/actions.js" defer></script>
+</body>
+</html>
