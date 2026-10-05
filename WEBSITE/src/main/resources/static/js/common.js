@@ -12,7 +12,8 @@ const state = {
   reservations: [],
   users: [],
   returnReports: [],
-  maintenance: []
+  maintenance: [],
+  returns: []
 };
 
 const roleLabels = {
@@ -123,7 +124,8 @@ function getNotifications() {
         msg = `Chauffeur on trip. Return scheduled on ${formatDate(res.endDate)}.`;
       } else if (res.status === "COMPLETED") {
         title = `Completed · ${res.bookingReference}`;
-        msg = `Rental finalized. Total: ${money(res.totalAmount)}.`;
+        const ret = state.returns.find(r => r.reservation?.id === res.id);
+        msg = `Rental finalized. Total: ${money(ret ? ret.grandTotal : res.totalAmount)}.`;
       }
       list.push({
         title: title,
@@ -193,6 +195,7 @@ async function loadRoleData() {
   state.users = [];
   state.returnReports = [];
   state.maintenance = [];
+  state.returns = [];
   if (!state.user) return;
   const jobs = [];
   if (["STAFF", "FLEET_MANAGER", "ADMIN"].includes(state.user.role)) jobs.push(request("/api/maintenance").then(data => state.maintenance = data));
@@ -201,6 +204,8 @@ async function loadRoleData() {
   if (state.user.role === "DRIVER") jobs.push(request("/api/driver/trips").then(data => state.reservations = data));
   if (["STAFF", "ADMIN", "DRIVER"].includes(state.user.role)) jobs.push(request("/api/driver-return-reports").then(data => state.returnReports = data));
   if (["STAFF", "ADMIN"].includes(state.user.role)) jobs.push(request("/api/users").then(data => state.users = data));
+  if (state.user.role === "CUSTOMER") jobs.push(request("/api/returns").then(data => state.returns = data.filter(r => r.reservation?.customer?.id === state.user.id)));
+  if (["STAFF", "ADMIN"].includes(state.user.role)) jobs.push(request("/api/returns").then(data => state.returns = data));
   await Promise.all(jobs);
 }
 
